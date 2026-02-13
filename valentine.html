@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marie 💝</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Crimson+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Crimson Text", serif;
+        background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Decorative hearts background */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 182, 193, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(circle at 80% 70%, rgba(255, 160, 160, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 50% 50%, rgba(255, 192, 203, 0.05) 0%, transparent 60%);
+        pointer-events: none;
+      }
+
+      .container {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 1s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 900;
+        color: #2d2d2d;
+        margin-bottom: 3rem;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .name {
+        color: #d4587a;
+        display: block;
+        font-size: 1.1em;
+        margin-bottom: 0.3em;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .buttons {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      button {
+        font-family: "Crimson Text", serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding: 1.2rem 3rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        letter-spacing: 0.03em;
+        position: relative;
+        overflow: hidden;
+      }
+
+      button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      button:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .yes-btn {
+        background: linear-gradient(135deg, #4ecca3 0%, #3ba87f 100%);
+        color: white;
+        position: relative;
+      }
+
+      .yes-btn:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(78, 204, 163, 0.4);
+      }
+
+      .yes-btn:active {
+        transform: translateY(-2px) scale(1.02);
+      }
+
+      .no-btn {
+        background: linear-gradient(135deg, #ff6b9d 0%, #f44171 100%);
+        color: white;
+        position: absolute;
+        transition: all 0.31s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .no-btn:hover {
+        box-shadow: 0 12px 35px rgba(255, 107, 157, 0.4);
+      }
+
+      /* Music icon */
+      .music-icon {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #d4587a 0%, #b84563 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(212, 88, 122, 0.3);
+        transition: all 0.3s ease;
+        z-index: 100;
+      }
+
+      .music-icon:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 12px 35px rgba(212, 88, 122, 0.5);
+      }
+
+      .music-icon svg {
+        width: 28px;
+        height: 28px;
+        fill: white;
+      }
+
+      .music-icon.playing {
+        animation: musicBounce 0.6s ease-in-out infinite;
+      }
+
+      @keyframes musicBounce {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.15);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .buttons {
+          gap: 1.5rem;
+        }
+
+        button {
+          font-size: 1.3rem;
+          padding: 1rem 2.5rem;
+        }
+
+        .music-icon {
+          top: 1.5rem;
+          right: 1.5rem;
+          width: 50px;
+          height: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Music Icon -->
+    <div class="music-icon" id="musicIcon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
+        />
+      </svg>
+    </div>
+
+    <audio id="bgMusic" loop>
+      <!-- You can add your Fall Out Boy song here -->
+      <!-- <source src="your-song.mp3" type="audio/mpeg"> -->
+    </audio>
+
+    <div class="container">
+      <h1>
+        <span class="name">Marie,</span>
+        Will You Be<br />My Valentine?
+      </h1>
+      <div class="buttons">
+        <button class="yes-btn" onclick="handleYes()">Yes! 💕</button>
+        <button class="no-btn" id="noBtn" onclick="handleNo()">No</button>
+      </div>
+    </div>
+
+    <script>
+      const noBtn = document.getElementById("noBtn");
+      const musicIcon = document.getElementById("musicIcon");
+      const bgMusic = document.getElementById("bgMusic");
+      let isPlaying = false;
+
+      // Music control
+      musicIcon.addEventListener("click", () => {
+        if (isPlaying) {
+          bgMusic.pause();
+          musicIcon.classList.remove("playing");
+        } else {
+          bgMusic.play();
+          musicIcon.classList.add("playing");
+        }
+        isPlaying = !isPlaying;
+      });
+
+      // Position the No button initially
+      function positionNoButton() {
+        const container = document.querySelector(".container");
+        const containerRect = container.getBoundingClientRect();
+        const yesBtn = document.querySelector(".yes-btn");
+        const yesBtnRect = yesBtn.getBoundingClientRect();
+
+        // Position to the right of Yes button initially
+        noBtn.style.position = "relative";
+        noBtn.style.left = "0";
+        noBtn.style.top = "0";
+      }
+
+      positionNoButton();
+
+      // Move No button on hover
+      let hoverTimeout;
+      noBtn.addEventListener("mouseenter", () => {
+        hoverTimeout = setTimeout(() => {
+          moveNoButton();
+        }, 200); // 0.2 second delay
+      });
+
+      noBtn.addEventListener("mouseleave", () => {
+        clearTimeout(hoverTimeout);
+      });
+
+      function moveNoButton() {
+        const maxX = window.innerWidth - 200;
+        const maxY = window.innerHeight - 100;
+        const minX = 100;
+        const minY = 100;
+
+        const h1Element = document.querySelector("h1");
+        const yesBtn = document.querySelector(".yes-btn");
+        const h1Rect = h1Element.getBoundingClientRect();
+        const yesBtnRect = yesBtn.getBoundingClientRect();
+
+        let newX, newY;
+        let attempts = 0;
+        const maxAttempts = 50;
+
+        do {
+          newX = Math.random() * (maxX - minX) + minX;
+          newY = Math.random() * (maxY - minY) + minY;
+          attempts++;
+
+          // Check if position overlaps with heading or Yes button
+          const overlapsH1 =
+            newX < h1Rect.right + 50 &&
+            newX + 200 > h1Rect.left - 50 &&
+            newY < h1Rect.bottom + 50 &&
+            newY + 100 > h1Rect.top - 50;
+
+          const overlapsYes =
+            newX < yesBtnRect.right + 50 &&
+            newX + 200 > yesBtnRect.left - 50 &&
+            newY < yesBtnRect.bottom + 50 &&
+            newY + 100 > yesBtnRect.top - 50;
+
+          if (!overlapsH1 && !overlapsYes) {
+            break;
+          }
+        } while (attempts < maxAttempts);
+
+        noBtn.style.position = "fixed";
+        noBtn.style.left = newX + "px";
+        noBtn.style.top = newY + "px";
+      }
+
+      function handleYes() {
+        window.location.href = "yes.html";
+      }
+
+      function handleNo() {
+        window.location.href = "no.html";
+      }
+    </script>
+  </body>
+</html>
